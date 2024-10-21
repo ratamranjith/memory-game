@@ -7,7 +7,7 @@ const MainPanel = () => {
   const [flipped, setFlipped] = useState([]);
   const [solved, setSolved] = useState([]);
   const [disabled, setDisabled] = useState(false);
-  const [score, setScore] = useState(0);
+  // const [score, setScore] = useState(0);
   const [count, setCount] = useState(0);
   const [time, setTime] = useState(30);
   const [won, setWon] = useState(false);
@@ -107,6 +107,11 @@ const MainPanel = () => {
   const isFlipped = (id) => flipped.includes(id) || solved.includes(id);
   const isSolved = (id) => solved.includes(id);
 
+  const resetGame = () => {
+    setFlipped([]);
+    setSolved([]);
+  };
+
   useEffect(() => {
     if (solved.length === cards.length) {
       setWon(true);
@@ -165,6 +170,10 @@ const MainPanel = () => {
             </div>
           )}
         </div>
+
+        <button onClick={resetGame} className="bg-blue-500 text-white">
+          Reset
+        </button>
       </div>
     </>
   );
